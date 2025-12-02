@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Goksha – Buyer Login (Hotels & Stores)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #222;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #00e3ff, #008cff);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      max-height: 56px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      background: white;
+      padding: 4px;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .hero {
+      background: #ffffff;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .hero h2 {
+      margin: 0 0 8px 0;
+      font-size: 21px;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hero-points {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #e3f6ff;
+      color: #008cff;
+    }
+    <p class="help-text">
+  Are you a farmer? <a href="index.html">Go to Farmer Partner Center</a>
+</p>
+
+
+    /* Cards */
+    .card {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .inline {
+      display: flex;
+      gap: 8px;
+    }
+    .inline > * {
+      flex: 1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #008cff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .btn-primary {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #008cff;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .btn-primary:active {
+      opacity: 0.9;
+      transform: scale(0.99);
+    }
+
+    .status-message {
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .status-success {
+      color: #0a8a34;
+    }
+
+    .status-error {
+      color: #c21c1c;
+    }
+
+    .help-text {
+      font-size: 11px;
+      color: #666;
+    }
+
+    /* Orders table */
+    .table-wrapper {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 8px 6px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 600;
+      background: #f5f8ff;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    footer {
+      background: #f4f7ff;
+      padding: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: #333;
+      border-top: 1px solid #d9e4ff;
+      line-height: 1.6;
+      margin-top: 24px;
+    }
+
+    footer strong {
+      font-size: 14px;
+      color: #008cff;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 12px 14px;
+      }
+      .brand-title {
+        font-size: 18px;
+      }
+      .logo-img {
+        max-height: 44px;
+      }
+      .inline {
+        flex-direction: column;
+      }
+      table {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="goksha-logo.png" alt="Goksha Logo" class="logo-img">
+  <div>
+    <div class="brand-title">Goksha</div>
+    <div class="brand-subtitle">Hotels & stores buy directly from Goksha</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Buyer Portal 🍽️</h2>
+    <p>
+      This page is for hotels, restaurants, canteens, mess, hostels and retail stores who want to buy
+      vegetables, grains, rice, dairy and processed powders directly from Goksha.
+      Place your bulk orders here. We will confirm and deliver as per schedule.
+    </p>
+    <div class="hero-points">
+      <span class="hero-tag">Consistent quality</span>
+      <span class="hero-tag">Zero-waste processing</span>
+      <span class="hero-tag">Trusted farmer network</span>
+    </div>
+  </section>
+
+  <!-- BUYER LOGIN CARD -->
+  <section id="loginCard" class="card">
+    <h3>Buyer Login</h3>
+    <p class="help-text">
+      No password for now. Just enter your business details once. This will be saved on this device.
+    </p>
+
+    <form id="loginForm">
+      <div class="form-row inline">
+        <div>
+          <label for="businessName">Business Name</label>
+          <input id="businessName" type="text" placeholder="Hotel / Restaurant / Store name" required />
+        </div>
+        <div>
+          <label for="contactPerson">Contact Person</label>
+          <input id="contactPerson" type="text" placeholder="Your name" required />
+        </div>
+      </div>
+
+      <div class="form-row inline">
+        <div>
+          <label for="buyerPhone">Mobile Number</label>
+          <input id="buyerPhone" type="tel" placeholder="10-digit mobile" required />
+        </div>
+        <div>
+          <label for="city">City / Area</label>
+          <input id="city" type="text" placeholder="City / Area" required />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary">Login / Continue</button>
+      <div id="loginStatus" class="status-message"></div>
+    </form>
+  </section>
+
+  <!-- BUYER DASHBOARD -->
+  <section id="dashboard" style="display:none;">
+    <div class="card">
+      <h3 id="welcomeText">Welcome</h3>
+      <p class="help-text">
+        Place your bulk orders below. These orders are stored on this device for now.
+        Later they can be connected to a central Goksha backend.
+      </p>
+    </div>
+
+    <section class="card">
+      <h3>New Order</h3>
+      <form id="orderForm">
+        <div class="form-row inline">
+          <div>
+            <label for="productCategory">Category</label>
+            <select id="productCategory">
+              <option value="Fresh Vegetables">Fresh Vegetables</option>
+              <option value="Fruits">Fruits</option>
+              <option value="Rice & Grains">Rice & Grains</option>
+              <option value="Milk & Dairy">Milk & Dairy</option>
+              <option value="Leafy Vegetables">Leafy Vegetables</option>
+              <option value="Dehydrated Powders">Dehydrated Powders</option>
+              <option value="Spices">Spices</option>
+            </select>
+          </div>
+          <div>
+            <label for="productName">Product Name</label>
+            <input id="productName" type="text" placeholder="Tomato, Potato, Sona Masuri rice, Milk, etc." required />
+          </div>
+        </div>
+
+        <div class="form-row inline">
+          <div>
+            <label for="orderQuantity">Quantity</label>
+            <input id="orderQuantity" type="number" min="1" max="100000" value="1" required />
+          </div>
+          <div>
+            <label for="orderUnit">Unit</label>
+            <select id="orderUnit">
+              <option value="kg">kg</option>
+              <option value="quintal">quintal</option>
+              <option value="litre">litre</option>
+              <option value="crates">crates</option>
+              <option value="bags">bags</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row inline">
+          <div>
+            <label for="deliveryDate">Required Delivery Date</label>
+            <input id="deliveryDate" type="date" />
+          </div>
+          <div>
+            <label for="deliverySlot">Preferred Time Slot</label>
+            <select id="deliverySlot">
+              <option value="Morning (6–10 AM)">Morning (6–10 AM)</option>
+              <option value="Afternoon (12–4 PM)">Afternoon (12–4 PM)</option>
+              <option value="Evening (4–8 PM)">Evening (4–8 PM)</option>
+              <option value="Anytime">Anytime</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="orderNotes">Notes (grade, size, packing, etc.)</label>
+          <textarea id="orderNotes" placeholder="Example: hotel-grade tomatoes 50–60mm, cleaned potatoes, powder in 1kg packs, etc."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Place Order</button>
+        <div id="orderStatus" class="status-message"></div>
+      </form>
+    </section>
+
+    <section>
+      <h3>Your Orders (on this device)</h3>
+      <p class="help-text">
+        These orders are saved locally in your browser. In the future this will connect to Goksha’s central system.
+      </p>
+      <div class="table-wrapper">
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Qty</th>
+              <th>Delivery</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filled by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <strong>Goksha Buyer Portal</strong><br>
+  Bulk supply for hotels, restaurants, canteens & stores.<br>
+  © 2025 Goksha. All rights reserved.
+</footer>
+
+<script>
+  const loginForm = document.getElementById("loginForm");
+  const loginCard = document.getElementById("loginCard");
+  const dashboard = document.getElementById("dashboard");
+  const loginStatus = document.getElementById("loginStatus");
+  const welcomeText = document.getElementById("welcomeText");
+
+  const orderForm = document.getElementById("orderForm");
+  const orderStatus = document.getElementById("orderStatus");
+  const ordersTableBody = document.querySelector("#ordersTable tbody");
+
+  let buyerProfile = null;
+  let orders = [];
+
+  function renderOrders() {
+    ordersTableBody.innerHTML = "";
+    if (orders.length === 0) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 5;
+      cell.textContent = "No orders placed yet.";
+      cell.style.textAlign = "center";
+      cell.style.color = "#777";
+      row.appendChild(cell);
+      ordersTableBody.appendChild(row);
+      return;
+    }
+
+    orders.forEach(o => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${o.createdDate}</td>
+        <td>${o.category}<br><strong>${o.productName}</strong></td>
+        <td>${o.quantity} ${o.unit}</td>
+        <td>${o.deliveryDate || "-"}<br>${o.deliverySlot}</td>
+        <td>${o.notes || "-"}</td>
+      `;
+      ordersTableBody.appendChild(row);
+    });
+  }
+
+  function saveToStorage() {
+    try {
+      localStorage.setItem("goksha_buyer_profile", JSON.stringify(buyerProfile));
+      localStorage.setItem("goksha_buyer_orders", JSON.stringify(orders));
+    } catch (e) {
+      console.warn("Could not save to storage:", e);
+    }
+  }
+
+  function loadFromStorage() {
+    try {
+      const prof = localStorage.getItem("goksha_buyer_profile");
+      const ords = localStorage.getItem("goksha_buyer_orders");
+      if (prof) buyerProfile = JSON.parse(prof);
+      if (ords) orders = JSON.parse(ords);
+    } catch (e) {
+      console.warn("Could not load from storage:", e);
+    }
+  }
+
+  function showDashboardIfLoggedIn() {
+    if (buyerProfile) {
+      loginCard.style.display = "none";
+      dashboard.style.display = "block";
+      welcomeText.textContent =
+        "Welcome, " + buyerProfile.contactPerson + " (" + buyerProfile.businessName + ")";
+      renderOrders();
+    } else {
+      loginCard.style.display = "block";
+      dashboard.style.display = "none";
+    }
+  }
+
+  loadFromStorage();
+  showDashboardIfLoggedIn();
+
+  loginForm.onsubmit = function(e) {
+    e.preventDefault();
+    loginStatus.textContent = "";
+    loginStatus.className = "status-message";
+
+    const businessName = document.getElementById("businessName").value.trim();
+    const contactPerson = document.getElementById("contactPerson").value.trim();
+    const buyerPhone = document.getElementById("buyerPhone").value.trim();
+    const city = document.getElementById("city").value.trim();
+
+    if (!businessName || !contactPerson || !buyerPhone || !city) {
+      loginStatus.textContent = "Please fill all the fields.";
+      loginStatus.classList.add("status-error");
+      return;
+    }
+
+    buyerProfile = { businessName, contactPerson, buyerPhone, city };
+    saveToStorage();
+    showDashboardIfLoggedIn();
+  };
+
+  orderForm.onsubmit = function(e) {
+    e.preventDefault();
+    orderStatus.textContent = "";
+    orderStatus.className = "status-message";
+
+    if (!buyerProfile) {
+      orderStatus.textContent = "Please login first.";
+      orderStatus.classList.add("status-error");
+      return;
+    }
+
+    const category = document.getElementById("productCategory").value;
+    const productName = document.getElementById("productName").value.trim();
+    const quantity = document.getElementById("orderQuantity").value;
+    const unit = document.getElementById("orderUnit").value;
+    const deliveryDate = document.getElementById("deliveryDate").value;
+    const deliverySlot = document.getElementById("deliverySlot").value;
+    const notes = document.getElementById("orderNotes").value.trim();
+
+    if (!productName || !quantity) {
+      orderStatus.textContent = "Please enter product name and quantity.";
+      orderStatus.classList.add("status-error");
+      return;
+    }
+
+    const today = new Date();
+    const createdDate =
+      today.getFullYear() + "-" +
+      String(today.getMonth() + 1).padStart(2, "0") + "-" +
+      String(today.getDate()).padStart(2, "0");
+
+    const order = {
+      category,
+      productName,
+      quantity,
+      unit,
+      deliveryDate,
+      deliverySlot,
+      notes,
+      createdDate
+    };
+
+    orders.push(order);
+    saveToStorage();
+    renderOrders();
+
+    orderForm.reset();
+    document.getElementById("orderQuantity").value = 1;
+    document.getElementById("productCategory").value = "Fresh Vegetables";
+    document.getElementById("deliverySlot").value = "Morning (6–10 AM)";
+
+    orderStatus.textContent = "Order added on this device.";
+    orderStatus.classList.add("status-success");
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Goksha – Farmer Partner Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #222;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #00e3ff, #008cff);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      max-height: 56px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      background: white;
+      padding: 4px;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    <p style="font-size:13px;margin-top:8px;">
+  Are you a hotel / restaurant? 
+  <a href="buyer.html">Go to Buyer Portal</a>
+</p>
+
+
+    /* Hero */
+    .hero {
+      background: #ffffff;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .hero h2 {
+      margin: 0 0 8px 0;
+      font-size: 21px;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hero-points {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #e3f6ff;
+      color: #008cff;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    /* Form */
+    form {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .form-section-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 8px;
+      border-left: 3px solid #008cff;
+      padding-left: 8px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .inline {
+      display: flex;
+      gap: 8px;
+    }
+
+    .inline > * {
+      flex: 1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #008cff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .help-text {
+      font-size: 11px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .btn-primary {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #008cff;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .btn-primary:active {
+      opacity: 0.9;
+      transform: scale(0.99);
+    }
+
+    .status-message {
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .status-success {
+      color: #0a8a34;
+    }
+
+    .status-error {
+      color: #c21c1c;
+    }
+
+    /* Table */
+    .table-wrapper {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 8px 6px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 600;
+      background: #f5f8ff;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    .badge-quality {
+      background: #e3f6ff;
+      color: #005fae;
+    }
+
+    footer {
+      background: #f4f7ff;
+      padding: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: #333;
+      border-top: 1px solid #d9e4ff;
+      line-height: 1.6;
+      margin-top: 24px;
+    }
+
+    footer strong {
+      font-size: 14px;
+      color: #008cff;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 12px 14px;
+      }
+      .brand-title {
+        font-size: 18px;
+      }
+      .logo-img {
+        max-height: 44px;
+      }
+      .inline {
+        flex-direction: column;
+      }
+      table {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="goksha-logo.png" alt="Goksha Logo" class="logo-img">
+  <div>
+    <div class="brand-title">Goksha</div>
+    <div class="brand-subtitle">Farmers sell directly to Goksha stores</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Farmer Partner Center 🌾</h2>
+    <p>
+      Bring your vegetables, fruits, grains, paddy, milk and other crops to your nearest Goksha store.
+      We process, pack and distribute to hotels, canteens, hostels and shops. No middlemen. No wastage.
+    </p>
+    <div class="hero-points">
+      <span class="hero-tag">Direct farmer to store</span>
+      <span class="hero-tag">Better prices for quality</span>
+      <span class="hero-tag">Zero-waste processing</span>
+    </div>
+  </section>
+
+  <section>
+    <h3>Farmer Supply Form</h3>
+
+    <form id="farmerForm">
+      <div class="form-section-title">Farmer Details</div>
+      <div class="form-row inline">
+        <div>
+          <label for="farmerName">Farmer Name</label>
+          <input id="farmerName" type="text" placeholder="Your full name" required />
+        </div>
+        <div>
+          <label for="phone">Mobile Number</label>
+          <input id="phone" type="tel" placeholder="10-digit mobile" required />
+        </div>
+      </div>
+
+      <div class="form-row inline">
+        <div>
+          <label for="altPhone">Alternate Mobile (optional)</label>
+          <input id="altPhone" type="tel" placeholder="Another number (if any)" />
+        </div>
+        <div>
+          <label for="village">Village / Area</label>
+          <input id="village" type="text" placeholder="Village / area" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="mandal">Mandal / District</label>
+        <input id="mandal" type="text" placeholder="Mandal / district" />
+      </div>
+
+      <div class="form-section-title">Nearest Goksha Store</div>
+      <div class="form-row">
+        <div class="inline">
+          <div>
+            <label for="storeSelect">Select store</label>
+            <select id="storeSelect" required>
+              <option value="">-- Select your nearest store --</option>
+              <!-- Replace with your real store names -->
+              <option value="Goksha Store – Peddapuram">Goksha Store – Peddapuram</option>
+              <option value="Goksha Store – Kakinada">Goksha Store – Kakinada</option>
+              <option value="Goksha Store – Samalkot">Goksha Store – Samalkot</option>
+              <option value="Goksha Store – Rajahmundry">Goksha Store – Rajahmundry</option>
+            </select>
+          </div>
+        </div>
+        <div class="help-text">Choose the town or store that is easiest for you to reach.</div>
+      </div>
+
+      <div class="form-section-title">Crop / Product Details</div>
+      <div class="form-row inline">
+        <div>
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="Vegetables">Vegetables</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Rice / Paddy">Rice / Paddy</option>
+            <option value="Grains / Pulses">Grains / Pulses</option>
+            <option value="Milk">Milk</option>
+            <option value="Leafy Vegetables">Leafy Vegetables</option>
+            <option value="Spices">Spices</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="cropName">Crop / Product Name</label>
+          <input id="cropName" type="text" placeholder="Potato / Tomato / Sona Masuri / etc." required />
+        </div>
+      </div>
+
+      <div class="form-row inline">
+        <div>
+          <label for="variety">Variety / Type (optional)</label>
+          <input id="variety" type="text" placeholder="Desi, Hybrid, Sona Masuri, etc." />
+        </div>
+        <div>
+          <label for="quality">Quality Type</label>
+          <select id="quality">
+            <option value="A - Premium">A - Premium</option>
+            <option value="B - Normal">B - Normal</option>
+            <option value="C - Mixed">C - Mixed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-title">Quantity & Supply</div>
+      <div class="form-row inline">
+        <div>
+          <label for="quantity">Quantity</label>
+          <input id="quantity" type="number" min="1" max="100000" value="1" required />
+        </div>
+        <div>
+          <label for="unit">Unit</label>
+          <select id="unit">
+            <option value="kg">kg</option>
+            <option value="quintal">quintal</option>
+            <option value="litre">litre</option>
+            <option value="bags">bags</option>
+            <option value="crates">crates</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row inline">
+        <div>
+          <label for="frequency">How often can you supply?</label>
+          <select id="frequency">
+            <option value="One time">One time</option>
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Season only">Season only</option>
+          </select>
+        </div>
+        <div>
+          <label for="harvestDate">Available from (date)</label>
+          <input id="harvestDate" type="date" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="expectedPrice">Expected price per unit (optional)</label>
+        <input id="expectedPrice" type="number" min="0" placeholder="₹ per kg / litre / quintal" />
+      </div>
+
+      <div class="form-section-title">Supply Method & Notes</div>
+      <div class="form-row inline">
+        <div>
+          <label for="supplyMethod">Supply Method</label>
+          <select id="supplyMethod">
+            <option value="Farmer brings to Goksha store">Farmer brings to Goksha store</option>
+            <option value="Goksha collects from farm">Goksha collects from farm</option>
+          </select>
+        </div>
+        <div>
+          <label for="slot">Preferred Time</label>
+          <select id="slot">
+            <option value="Morning (6–10 AM)">Morning (6–10 AM)</option>
+            <option value="Afternoon (12–4 PM)">Afternoon (12–4 PM)</option>
+            <option value="Evening (4–8 PM)">Evening (4–8 PM)</option>
+            <option value="Anytime Today">Anytime today</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="note">Notes (quality, drying, processing, etc.)</label>
+        <textarea id="note" placeholder="Example: suitable for hotel use, can also be dried for powder, organic, etc."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Submit Supply Details
+      </button>
+      <div id="statusMessage" class="status-message"></div>
+    </form>
+  </section>
+
+  <section>
+    <h3>Your Submitted Supplies (on this device)</h3>
+    <p class="help-text">
+      These records are stored only in this browser for now. In a real system, they will be sent to a Goksha dashboard/database.
+    </p>
+    <div class="table-wrapper">
+      <table id="suppliesTable">
+        <thead>
+          <tr>
+            <th>Farmer</th>
+            <th>Contact</th>
+            <th>Location</th>
+            <th>Store</th>
+            <th>Crop</th>
+            <th>Quantity</th>
+            <th>Quality</th>
+            <th>Frequency</th>
+            <th>Available From</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Goksha Stores</strong><br>
+  Farmer partner collection network – Andhra Pradesh<br>
+  Contact: +91 7396552302<br>
+  © 2025 Goksha. All rights reserved.
+</footer>
+
+<script>
+  const farmerForm = document.getElementById("farmerForm");
+  const suppliesTableBody = document.querySelector("#suppliesTable tbody");
+  const statusMessage = document.getElementById("statusMessage");
+
+  // Keep submissions in memory (and optional localStorage)
+  let supplies = [];
+
+  function renderSupplies() {
+    suppliesTableBody.innerHTML = "";
+    if (supplies.length === 0) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 9;
+      cell.textContent = "No supplies submitted yet.";
+      cell.style.textAlign = "center";
+      cell.style.color = "#777";
+      row.appendChild(cell);
+      suppliesTableBody.appendChild(row);
+      return;
+    }
+
+    supplies.forEach((s) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${s.farmerName}</td>
+        <td>${s.phone}${s.altPhone ? "<br>" + s.altPhone : ""}</td>
+        <td>${s.village}${s.mandal ? "<br>" + s.mandal : ""}</td>
+        <td>${s.store}</td>
+        <td>${s.category}<br><strong>${s.cropName}</strong>${s.variety ? "<br>" + s.variety : ""}</td>
+        <td>${s.quantity} ${s.unit}</td>
+        <td><span class="badge badge-quality">${s.quality}</span></td>
+        <td>${s.frequency}</td>
+        <td>${s.harvestDate || "-"}</td>
+      `;
+
+      suppliesTableBody.appendChild(row);
+    });
+  }
+
+  // Load from localStorage if you want persistence on same device
+  try {
+    const stored = localStorage.getItem("goksha_supplies");
+    if (stored) {
+      supplies = JSON.parse(stored);
+    }
+  } catch (e) {
+    console.warn("Could not load stored supplies:", e);
+  }
+  renderSupplies();
+
+  farmerForm.onsubmit = function (e) {
+    e.preventDefault();
+    statusMessage.textContent = "";
+    statusMessage.className = "status-message";
+
+    const farmerName = document.getElementById("farmerName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const altPhone = document.getElementById("altPhone").value.trim();
+    const village = document.getElementById("village").value.trim();
+    const mandal = document.getElementById("mandal").value.trim();
+    const store = document.getElementById("storeSelect").value;
+
+    const category = document.getElementById("category").value;
+    const cropName = document.getElementById("cropName").value.trim();
+    const variety = document.getElementById("variety").value.trim();
+    const quality = document.getElementById("quality").value;
+
+    const quantity = document.getElementById("quantity").value;
+    const unit = document.getElementById("unit").value;
+    const frequency = document.getElementById("frequency").value;
+    const harvestDate = document.getElementById("harvestDate").value;
+    const expectedPrice = document.getElementById("expectedPrice").value.trim();
+
+    const supplyMethod = document.getElementById("supplyMethod").value;
+    const slot = document.getElementById("slot").value;
+    const note = document.getElementById("note").value.trim();
+
+    if (!farmerName || !phone || !village || !store || !cropName || !quantity) {
+      statusMessage.textContent = "Please fill all required fields (marked).";
+      statusMessage.classList.add("status-error");
+      return;
+    }
+
+    const supply = {
+      farmerName,
+      phone,
+      altPhone,
+      village,
+      mandal,
+      store,
+      category,
+      cropName,
+      variety,
+      quality,
+      quantity,
+      unit,
+      frequency,
+      harvestDate,
+      expectedPrice,
+      supplyMethod,
+      slot,
+      note,
+      createdAt: new Date().toISOString()
+    };
+
+    supplies.push(supply);
+
+    try {
+      localStorage.setItem("goksha_supplies", JSON.stringify(supplies));
+    } catch (e) {
+      console.warn("Could not save supplies:", e);
+    }
+
+    renderSupplies();
+
+    farmerForm.reset();
+    // Reset some defaults
+    document.getElementById("quantity").value = 1;
+    document.getElementById("category").value = "Vegetables";
+    document.getElementById("quality").value = "A - Premium";
+    document.getElementById("frequency").value = "One time";
+    document.getElementById("supplyMethod").value = "Farmer brings to Goksha store";
+    document.getElementById("slot").value = "Morning (6–10 AM)";
+
+    statusMessage.textContent = "Supply details submitted successfully on this device.";
+    statusMessage.classList.add("status-success");
+  };
+</script>
+
+</body>
+</html>
